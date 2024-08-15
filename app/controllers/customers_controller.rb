@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
   before_action :set_customer, only: %i[ show edit update destroy ]
 
   # GET /customers or /customers.json
@@ -60,7 +61,7 @@ class CustomersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
-      debugger
+#       debugger
       @customer = Customer.find(params[:id])
     end
 
@@ -68,4 +69,11 @@ class CustomersController < ApplicationController
     def customer_params
       params.require(:customer).permit(:first_name, :last_name, :phone, :email)
     end
+
+    def catch_not_found(e)
+          Rails.logger.debug("We had a not found exception.")
+          flash.alert = e.to_s
+          redirect_to customers_path
+    end
+
 end

@@ -2,13 +2,24 @@
 
 <h1>Customers</h1>
 
-<div id="customers">
-  <% @customers.each do |customer| %>
-    <%= render customer %>
-    <p>
-      <%= link_to "Show this customer", customer %>
-    </p>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Orders</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.full_name %></td>
+        <td><%= customer.orders.count %></td>
+        <td><%= button_to "Show", customer_path(customer), method: :get %></td>
+        <td><%= button_to "Edit", edit_customer_path(customer), method: :get %></td>
+        <td><%= button_to "Delete", customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to "New customer", new_customer_path %>

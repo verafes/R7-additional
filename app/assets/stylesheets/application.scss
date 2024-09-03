@@ -13,6 +13,51 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap";
+
+:root {
+   --bs-body-bg: #fbe4d5;
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('Krub-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'Krub';
+  src: url('Krub-SemiBold.ttf');
+}
+
+body {
+  font-family: 'Krub', sans-serif;
+  word-spacing: 1px;
+  font-weight: 400;
+}
+
+.banner-background {
+  background-image: url('cafe-8223835_1920.jpg');
+  background-size: cover;
+  font-family: 'Krub', sans-serif;
+  font-weight: 700;
+  word-spacing: 1px;
+}
+
+// .nav-light {
+// //   background-color: #fbf4e5;
+//   padding-left: 0.5em;
+// }
+
 .my_alert {
     color: red;
 }
+
+.form-select {
+  background-color: white;
+}
+
+// .form-select option:first-child {
+//   background-color: #fbf4e5;
+//   color: #6c757d;
+// }

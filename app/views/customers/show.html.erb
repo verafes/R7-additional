@@ -9,6 +9,8 @@
   <%= button_to "Delete this customer", @customer, method: :delete, class: "btn btn-danger mt-3" %>
 </div>
 
+<%= render "deleteModal", customer: @customer %>
+
 <% if @customer.orders.any? %>
   <h3>Orders for <%= @customer.full_name %></h3>
 

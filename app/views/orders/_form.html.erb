@@ -1,7 +1,10 @@
 <%= form_with(model: @order) do |form| %>
   <% if @order.errors.any? %>
     <div id="error_explanation" class="my_alert">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+      <h3>
+        <%= icon("fa-regular", "bell") %>
+        <%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:
+      </h3>
       <ul>
         <% @order.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -26,6 +29,6 @@
   </div>
 
   <div class="actions mt-3 rounded-1">
-    <%= form.submit class: "btn btn-success btn-sm"%>
+    <%= form.submit "Confirm", class: "btn btn-success btn-sm"%>
   </div>
 <% end %>

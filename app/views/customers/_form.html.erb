@@ -1,7 +1,10 @@
 <%= form_with(model: customer) do |form| %>
   <% if customer.errors.any? %>
     <div style="color: red">
-      <h3><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved: </h3>
+      <h3>
+        <%= icon("fa-regular", "bell") %>
+        <%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:
+      </h3>
 
       <ul>
         <% customer.errors.each do |error| %>

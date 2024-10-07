@@ -11,11 +11,55 @@
   </head>
 
   <body>
-    <% if flash[:alert].present? %>
-      <p class="my_alert"><%= flash[:alert] %></p>
-    <% end %><% if flash[:alert].present? %>
-      <p class="my_alert"><%= flash[:alert] %></p>
-    <% end %>
-    <%= yield %>
+    <div class='container-fluid'>
+      <div class="mt-4 p-5 text-white banner-background">
+        <h1 class="font-size-1">Customers and Orders</h1>
+        <p class=font-size-2">Keep shopping experience under control.</p>
+    </div>
+
+      <% if flash[:alert].present? %>
+        <div class="alert alert-success" >
+          <p style="color: green"><%= flash[:notice] %></p>
+        </div>
+      <% end %>
+      <% if flash[:alert].present? %>
+        <div class="alert alert-danger" role="alert">
+          <p class="my_alert"><%= flash[:alert] %></p>
+        </div>
+      <% end %>
+
+      <nav class="navbar navbar-expand-lg bg-light navbar-light ps-5">
+        <div class="nav-item dropdown me-3">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Customers
+          </a>
+          <ul class="dropdown-menu bg-light rounded-1">
+            <li class="nav-item nav-link active">
+              <%= link_to "Customers list", customers_path, class: "btn" %>
+            </li>
+            <li class="nav-item nav-link">
+              <%= link_to "New customer", new_customer_path, class: "btn" %>
+            </li>
+          </ul>
+        </div>
+        <div class="nav-item dropdown ms-3">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Orders
+          </a>
+          <ul class="dropdown-menu bg-light rounded-1">
+            <li class="nav-item">
+              <%= link_to "Orders list", orders_path, class: "btn border-0" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "New order",  new_order_path, class: "btn border-0" %>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="p-5">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

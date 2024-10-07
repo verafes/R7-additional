@@ -2,24 +2,32 @@
 
 <h1>Customers</h1>
 
-<table>
+<table class="table border-top border-bottom border-white">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Orders</th>
+      <th class="ps-0">Name</th>
+      <th class="ps-3">Orders</th>
     </tr>
+
   </thead>
   <tbody>
     <% @customers.each do |customer| %>
-      <tr>
-        <td><%= customer.full_name %></td>
-        <td><%= customer.orders.count %></td>
-        <td><%= button_to "Show", customer_path(customer), method: :get %></td>
-        <td><%= button_to "Edit", edit_customer_path(customer), method: :get %></td>
-        <td><%= button_to "Delete", customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <tr class="mb-3">
+        <td class="ps-0">
+          <%= icon("fa-regular", "user")%>
+          <%= customer.full_name %></td>
+        <td class="ps-3"><%= customer.orders.count %></td>
+        <td class="ps-3"><%= button_to "Show", customer_path(customer), method: :get, class: "btn btn-light btn-sm rounded-1 me-2" %></td>
+        <td class="ps-3"><%= button_to "Edit", edit_customer_path(customer), method: :get, class: "btn btn-light btn-sm rounded-1 me-2" %></td>
+        <td class="ps-3">
+          <button type="button" class="btn btn-danger btn-sm rounded-1" data-bs-toggle="modal" data-bs-target="#myModal-<%= customer.id%>">
+            Delete
+          </button>
+        </td>
       </tr>
+      <%= render "customers/deleteModal", customer: customer %>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to "New customer", new_customer_path %>
+<%= link_to "New customer", new_customer_path, class: "btn btn-success btn-sm rounded-1 mt-3"%>

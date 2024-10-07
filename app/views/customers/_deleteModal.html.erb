@@ -1,0 +1,26 @@
+<div class="modal fade" id="<%= "myModal-#{customer.id}" %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <p>Are you sure you want to delete the customer <strong><%= customer.full_name %></strong> and all associated orders?</p>
+        <p>This customer has <%= customer.orders.count.to_s %> orders.</p>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <%= button_to("Delete", "/customers/customerAndOrders/#{customer.id}", method: :delete, class: "btn btn-danger rounded-1", data: { "bs-dismiss" => "modal" }) %>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,6 @@
 <%= render 'form', order: @order %>
 <br>
 <div>
-  <%= link_to "Show this order", @order %> |
-  <%= link_to "Back to orders", orders_path %>
+  <%= link_to "Show this order", @order, class: "btn btn-light btn-sm rounded-1 me-2" %>
+  <%= link_to "Back to orders", orders_path, class: "btn btn-light btn-sm rounded-1" %>
 </div>

@@ -1,7 +1,10 @@
 <%= form_with(model: @order) do |form| %>
   <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+    <div id="error_explanation" class="my_alert">
+      <h3>
+        <%= icon("fa-regular", "bell") %>
+        <%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:
+      </h3>
       <ul>
         <% @order.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,22 +13,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field mb-2">
     <%= form.label :product_name, style: "display: block" %>
     <%= form.text_field :product_name %>
   </div>
 
-  <div class="field">
+  <div class="field mb-2">
     <%= form.label :product_count, style: "display: block" %>
     <%= form.number_field :product_count %>
   </div>
 
-  <div class="field">
+  <div class="field mb-2">
     <%= form.label :customer_id, style: "display: block" %>
-    <%= form.collection_select :customer_id, Customer.all, :id, :full_name, include_blank: true %>
+    <%= form.collection_select :customer_id, Customer.all, :id, :full_name, { include_blank: "Select" }, class: "form-select w-50 rounded-0" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions mt-3 rounded-1">
+    <%= form.submit "Confirm", class: "btn btn-success btn-sm"%>
   </div>
 <% end %>
